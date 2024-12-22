@@ -1,12 +1,12 @@
 {
-  "name": "lect_2_project",
+  "name": "korbman_project_1",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Pavel Korbman",
   "license": "ISC",
-  "description": ""
+  "description": "Math functions"
 }
