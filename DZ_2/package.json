@@ -1,0 +1,11 @@
+{
+  "name": "korbmanMathQuad",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {   
+  },
+  "keywords": [],
+  "author": "Pavel Korbman",
+  "license": "ISC",
+  "description": "Math Quadratic Equation"
+}
