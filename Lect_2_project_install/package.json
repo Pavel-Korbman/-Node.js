@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "korbman_project_1": "^1.0.0"
+    "korbman_project_1": "^1.0.0",
+    "korbman-math-quad": "^1.0.0"
   }
 }
