@@ -6,4 +6,8 @@ function dif (a,b){
     return a-b;
 }
 
-module.exports ={summ, dif};
+function multiple (a,b){
+    return a*b;
+}
+
+module.exports ={summ, dif, multiple};
