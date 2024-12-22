@@ -6,4 +6,7 @@
 
 const uuid = require('uuid');
 const id = uuid.v4();
+const sayHi = require('./hello');
+sayHi.hi('Павел Корбман');
 console.log(id);
+
