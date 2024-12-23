@@ -1,12 +1,33 @@
 // Задание №1 
-function calculateResultSumm(purchases, discount) {
-    let total = purchases.reduce((acc, purchases) => acc += purchases, 0);
-    total = total * discount;
-    return total;
-}
+// Необходимо найти, установить и применить библиотеку, которая позволит избежать проблем со сложением и умножением чисел с плавающей запятой
 
-let Decimal = require('decimal.js-light');
+// Задание №2
+// 1.  Необходимо вынести функцию .calculateResultSum() в отдельный файл, импортировать её в основной файл и использовать. 
+// 2. Также необходимо вынести запуск скрипта в скрипты запуска NPM, для того, чтобы можно было запускать скрипт с помощью команды npm run start.
 
-const total = new Decimal(calculateResultSumm([12.1, 32.2, 43.1], 0.9));
+// function calculateResultSumm(purchases, discount) {
+//     let total = purchases.reduce((acc, purchases) => acc += purchases, 0);
+//     total = total * discount;
+//     return total;
+// }
+// const total1 = model.calculateResultSumm([12.1, 32.2, 43.1], 0.9);
+// console.log(`Общая стоимость покупок: ${total1} рублей.`);
+// Общая стоимость покупок: 78.66000000000001 рублей.
 
-console.log(`Общая стоимость покупок: ${total.toFixed(2)} рублей.`);
+// Задание №3
+// - Найти библиотеку, которая поможет окрасить текст в терминале 
+// - Применить возможности библиотеки и окрасить сообщение о стоимости покупок красным, если стоимость больше 50 рублей и зеленым, если стоимость менее 50 рублей
+
+const model = require('./model');
+const color = require('cli-color');
+
+const total = model.calculateResultSumm([10.1, 22.2, 3.1], 0.9);
+
+console.log('Общая стоимость покупок: ', (total > 50) ? color.red(total) : color.green(total), 'рублей.');
+// Общая стоимость покупок: 78.66 рублей.
+
+
+
+
+
+

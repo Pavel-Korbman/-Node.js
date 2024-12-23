@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "decimal.js-light": "^2.5.1"
+    "cli-color": "^2.0.4",
+    "number-precision": "^1.6.0"
   }
 }
