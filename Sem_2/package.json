@@ -1,0 +1,15 @@
+{
+  "name": "sem_2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "keywords": [],
+  "author": "Pavel Korbman",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "decimal.js-light": "^2.5.1"
+  }
+}
