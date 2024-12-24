@@ -1,7 +1,6 @@
 function quadratic(a, b, c) {
     const d = b * b - 4 * a * c;
-    if (d < 0) {
-        console.log('Уравнение не имеет решений.');
+    if (d < 0) {        
         return [NaN, NaN];
     } else if (d === 0) {
         return [(-b) / (2 * a), NaN];

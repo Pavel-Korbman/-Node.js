@@ -4,7 +4,12 @@
   "main": "index.js",
   "scripts": {   
   },
-  "keywords": [],
+  "keywords": [
+    "quadratic",
+    "equation",
+    "solver",
+    "mathematics"
+  ],
   "author": "Pavel Korbman",
   "license": "ISC",
   "description": "Math Quadratic Equation",
