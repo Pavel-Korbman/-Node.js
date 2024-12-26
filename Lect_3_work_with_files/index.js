@@ -61,10 +61,49 @@ const fs = require('fs');
 // лучше не использовать на работающем сервере
 
 // Пример обработки ошибки:
-try {
-    fs.appendFileSync('./hello.txt', ' Как дела');
-    const fileData1 = fs.readFileSync('./hello.txt', 'utf8');
-    console.log(fileData1); // Привет Павел Корбман Как дела Как дела
-} catch (error) {
-    console.error(error);
-}
+// try {
+//     fs.appendFileSync('./hello.txt', ' Как дела');
+//     const fileData1 = fs.readFileSync('./hello.txt', 'utf8');
+//     console.log(fileData1); // Привет Павел Корбман Как дела Как дела
+// } catch (error) {
+//     console.error(error);
+// }
+
+// Модуль path 
+// Этот модуль помогает работать с путями в файловой системе
+
+const path = require('path');
+
+console.log(path.join('/User/Student', 'Desktop/index.js'));
+// \User\Student\Desktop\index.js
+
+console.log(path.parse('/User/Student/Desktop/index.js'));
+// {
+//     root: '/',
+//     dir: '/User/Student/Desktop',
+//     base: 'index.js',
+//     ext: '.js',
+//     name: 'index'
+//   }
+
+console.log(path.dirname('/User/Student/Desktop/index.js'));
+// /User/Student/Desktop
+
+console.log(path.extname('/User/Student/Desktop/index.js'));
+// .js
+
+// Модуль os 
+// Этот модуль позволяет получить информацию об операционной системе
+
+const os = require('os');
+console.log(os.cpus()); // Информация о ядрах
+console.log(os.arch()); // Информация о архитектуре процессора
+console.log(os.freemem()); // Количество свободной памяти в байтах
+console.log(os.totalmem() / 1024 / 1024 / 1024); // Количество оперативной памяти в мегабайтах
+
+
+
+
+
+
+
