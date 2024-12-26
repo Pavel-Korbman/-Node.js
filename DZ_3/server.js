@@ -1,39 +1,25 @@
-// 
+// Напишите HTTP сервер на express и реализуйте два обработчика “/” и “/about”, где:
+// — На каждой странице реализован счетчик просмотров
+// — Значение счетчика необходимо сохранять в файл каждый раз, когда обновляется страница
+// — Также значение счетчика должно загружаться из файла, когда запускается обработчик страницы
+// — Таким образом счетчик не должен обнуляться каждый раз, когда перезапускается сервер.
 
-// const createCounter = () => {
-//     let counter = 0;
-//     return () => {
-//         return ++counter;
-//     }
-// }
-// const counterHome = createCounter();
-// const counterAbout = createCounter();
 
-// const http = require('http');
-// const server = http.createServer((reg, res) => {
-//     if (reg.url === '/') {
-//         res.writeHead(200, { 'content-type': 'text/html; charset=UTF-8' });
-//         res.end(`<h1>Корневая страница</h1><p>Просмотров: ${counterHome()}</p><a href="http://localhost:4000/about">Ссылка на страницу /about</a>`);
-//     } else if (reg.url === '/about') {
-//         res.writeHead(200, { 'content-type': 'text/html; charset=UTF-8' });
-//         res.end(`<h1>Страница about</h1><p>Просмотров: ${counterAbout()}</p><a href="http://localhost:4000">Ссылка на страницу /</a>`);
-//     } else {
-//         res.writeHead(404, { 'content-type': 'text/html; charset=UTF-8' });
-//         res.end('<h1>404 Страница не найдена</h1>');
-//     }
-// });
 
 const express = require('express');
 const app = express();
+
+const counterHome = 0;
+const counterAbout = 0;
 app.get('/', (req, res) => {
-    res.send('<h1>Привет. Добро пожаловать на мой сервер!</h1>');
+    res.send(`<h1>Корневая страница</h1><p>Просмотров: ${counterHome}</p><a href="http://localhost:5000/about">Ссылка на страницу /about</a>`);   
 });
 
 app.get('/about', (req, res) => {
-    res.send('<h1>Страница обо мне</h1>');
+    res.send(`<h1>Страница about</h1><p>Просмотров: ${counterAbout}</p><a href="http://localhost:5000">Ссылка на страницу /</a>`);
 });
 
-const port = 6000;
+const port = 5000;
 app.listen(port, () => {
     console.log(`Сервер запущен на порту ${port}`);
 });
