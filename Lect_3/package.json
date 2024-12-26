@@ -1,14 +1,12 @@
 {
-  "name": "lect_2",
+  "name": "lect_3",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js"
   },
-  "author": "",
+  "keywords": [],
+  "author": "Pavel Korbman",
   "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "uuid": "^11.0.3"
-  }
+  "description": ""
 }
