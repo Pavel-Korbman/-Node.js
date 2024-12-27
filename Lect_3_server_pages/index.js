@@ -1,15 +1,17 @@
+// Возврат html файлов 
+
+// Писать HTML в JavaScript строке не очень удобно. Для удобства в express существует возможность отдавать в качестве ответа html файл с помощью метода res.sendFile()
+
 const express = require('express');
+const path = require('path');
+
 const app = express();
+
 app.get('/', (req, res) => {
-    res.send('<h1>Привет. Добро пожаловать на мой сервер!</h1>');
+    res.sendFile(path.join(__dirname, 'static/index.html'));
 });
 
-app.get('/about', (req, res) => {
-    res.send('<h1>Страница обо мне</h1>');
-});
-
-const port = 5500; // Задаём порт
-
+const port = 5500;
 app.listen(port, () => {
     console.log(`Сервер запущен на порту ${port}`);
 });
