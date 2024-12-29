@@ -36,12 +36,31 @@ const handlebars = require('handlebars');
 const template = handlebars.compile('<p>{{Var1}} {{Var2}}</p>');
 
 // const result = template({someVar: 'Привет Павел!'});
-const result = template({Var1: 'Привет', Var2: 'Павел!'}); 
+const result = template({ Var1: 'Привет', Var2: 'Павел!' });
 // <p>Привет Павел !</p>
 
 console.log(result);
-
+console.log('');
 
 // Условная конструкция
 // {{# if value}} <p></p> {{else}} <b></b> {{/if}};
 
+const template1 = handlebars.compile(
+    '{{# if bold}} <b>Hello!</b> {{else}} <p>Hello!</p> {{/if}}'
+);
+
+console.log(template1({ bold: true }));
+console.log(template1({ bold: false }));
+
+// Перебор массива в цикле
+
+const items = [
+    { name: 'first item', number: 3 },
+    { name: 'second item', number: 5 }
+];
+
+const template2 = handlebars.compile(
+    '{{#each items}} <p>{{this.name}} {{this.number}} </p> {{/each}}'
+);
+
+console.log(template2({ items }));
