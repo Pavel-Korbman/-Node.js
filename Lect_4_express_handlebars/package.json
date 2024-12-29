@@ -1,5 +1,5 @@
 {
-  "name": "lect_4",
+  "name": "lect_4_express_handlebars",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,8 @@
   "description": "",
   "dependencies": {
     "express": "^4.21.2",
-    "handlebars": "^4.7.8"
+    "express-handlebars": "^8.0.1",
+    "handlebars": "^4.7.8",
+    "path": "^0.12.7"
   }
 }
