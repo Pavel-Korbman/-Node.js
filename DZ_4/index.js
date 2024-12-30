@@ -14,7 +14,15 @@ age: joi.number().min(0).max(120).required(),
 city: joi.string().min(2)
 });
 
-const users = [];
+let users = [];
+// let users;
+
+try {
+    users.push(JSON.parse(fs.readFileSync('./users.json', 'utf8')));
+} catch (err) {
+    console.error(err);
+}
+
 let usersId = 0;
 
 app.get('/users', (req, res) => {
