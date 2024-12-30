@@ -1,1 +1,6 @@
-{"home":11,"about":19}
+{
+    "firstName":"Pavel",
+    "secondName":"Korbman",
+    "age": 55,
+    "city": "Moscow"
+}

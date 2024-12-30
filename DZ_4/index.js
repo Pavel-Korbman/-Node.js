@@ -12,6 +12,17 @@ app.get('/users', (req, res) => {
     res.send({ users });
 });
 
+app.get('/users/:id', (req, res) => {
+    const userId = +req.params.id; // Number()
+    const user = users.find(user => user.id === userId);
+    if (user) {
+        res.send({ user });
+    } else {
+        res.status(404);
+        res.send({ user: null });
+    }
+});
+
 app.post('/users', (req, res) => {
     usersId += 1;
     users.push({
@@ -30,6 +41,20 @@ app.put('/users/:id', (req, res) => {
         user.secondName = secondName;
         user.age = age;
         user.city = city;
+        res.send({ user });
+    } else {
+        res.status(404);
+        res.send({ user: null });
+    }
+});
+
+app.delete('/users/:id', (req, res) => {
+    const userId = +req.params.id; // Number()
+    const user = users.find(user => user.id === userId);
+    if (user) {
+        const userIndex = users.indexOf(user);
+        users.splice(userIndex, 1);
+
         res.send({ user });
     } else {
         res.status(404);
