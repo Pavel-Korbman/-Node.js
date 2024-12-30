@@ -19,7 +19,8 @@ try {
     console.error(err);
 }
 
-let usersId = users[users.length - 1].id;
+let usersId;
+(users[0])? usersId = users[users.length - 1].id : usersId =0;
 
 app.get('/users', (req, res) => {
     res.send({ users });
