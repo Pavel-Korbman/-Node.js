@@ -1,4 +1,5 @@
-const fs = require('fs');
+const fs = require('fs/promises');
+// const fs = require('fs');
 const path = require('path');
 
 const person = {
@@ -8,8 +9,10 @@ const person = {
     'city': 'Moscow'
 };
 
-try {
-  fs.writeFileSync(path.join(__dirname, 'person.json'), JSON.stringify(person));  
-} catch (error) {
-    console.error(error);
-} 
+// try {
+//   fs.writeFileSync(path.resolve(__dirname, 'person.json'), JSON.stringify(person, null, 2));  
+// } catch (error) {
+//     console.error(error);
+// } 
+
+fs.writeFile(path.resolve(__dirname, 'person.json'), JSON.stringify(person,null, 2));

@@ -1,1 +1,6 @@
-{"name":"Ivan","surname":"Ivanov","age":30,"city":"Moscow"}
+{
+  "name": "Ivan",
+  "surname": "Ivanov",
+  "age": 20,
+  "city": "Ekaterinburg"
+}
