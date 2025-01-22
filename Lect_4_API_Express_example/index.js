@@ -115,7 +115,7 @@ app.listen(3000);
 
 // Реализация API c валидацией Joi
 
-
+/*
 const express = require('express');
 const Joi = require('joi');
 const app = express();
@@ -211,6 +211,112 @@ app.delete('/articles/:id', (req, res) => {
         res.status(404);
         res.send({ article: null });
     }
+});
+
+app.listen(3000);
+*/
+
+
+
+
+// РЕФАКТОРИНГ КОДА Реализация API c валидацией Joi 
+
+const express = require('express');
+
+/**
+ * Импортируем методы валидации :
+ */
+const { checkParams, checkBody } = require('./validation/validator');
+
+/**
+ * Импортируем схемы (для валидации ID и статьи) валидатора Joi :
+ */
+const { idSchema, articleSchema } = require('./validation/schema');
+
+const app = express();
+
+app.use(express.json());
+
+const articles = []; // храним статьи в массиве (правильно считывать его из файла)
+let uniqueID = 0; // для генерации ID новой статьи
+
+/**
+ * Роут получения всех статей:
+ */
+app.get('/articles', (req, res) => {
+    res.send({ articles });
+});
+
+/**
+ * Роут создания статьи:
+ */
+app.post('/articles', checkBody(articleSchema), (req, res) => {
+    uniqueID += 1;
+
+    articles.push({
+        id: uniqueID,
+        ...req.body
+    });
+
+    res.send({ id: uniqueID, });
+});
+
+/**
+ * Роут получения статьи по ID:
+ */
+app.get('/articles/:id', checkParams(idSchema), (req, res) => {
+
+    const article = articles.find((article) => article.id === Number(req.params.id));
+
+    if (article) {
+        res.send({ article });
+    } else {
+        res.status(404);
+        res.send({ article: null });
+    }
+});
+
+/**
+ * Роут изменения статьи:
+ */
+app.put('/articles/:id', checkParams(idSchema), checkBody(articleSchema), (req, res) => {
+
+    const article = articles.find((article) => article.id === Number(req.params.id));
+
+    if (article) {
+        article.title = req.body.title;
+        article.content = req.body.content;
+        res.send({ article });
+    } else {
+        res.status(404);
+        res.send({ article: null });
+    }
+});
+
+/**
+ * Роут удаления статьи:
+ */
+app.delete('/articles/:id', checkParams(idSchema), (req, res) => {
+
+    const article = articles.find((article) => article.id === Number(req.params.id));
+
+    if (article) {
+        const articleIndex = articles.indexOf(article);
+        articles.splice(articleIndex, 1);
+        res.send({ article });
+    } else {
+        res.status(404);
+        res.send({ article: null });
+    }
+});
+
+/**
+ * Обработчик несуществующих URL:
+ */
+app.use((req, res) => {
+    res.status(404).send({
+        message: 'URL not found!'
+    })
 });
 
 app.listen(3000);
