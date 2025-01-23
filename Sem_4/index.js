@@ -23,6 +23,9 @@ DELETE /users/:id - удаление пользователя
 // -Помните, что если пользователь не найден, то необходимо вернуть соответствующий ответ клиенту
 
 const express = require('express');
+const {idSchema, bodySchema} = require('./validation/schema');
+const { checkParams, checkBody }= require('./validation/validator');
+
 const app = express();
 app.use(express.json());
 
@@ -33,7 +36,7 @@ app.get('/users', (req, res) => {
     res.send(users);
 });
 
-app.get('/users/:id', (req, res) => {
+app.get('/users/:id', checkParams(idSchema), (req, res) => {
     const user = users.find(user => user.id === Number(req.params.id));
     if (user) {
         res.send(user);
@@ -43,7 +46,7 @@ app.get('/users/:id', (req, res) => {
     }
 });
 
-app.post('/users', (req, res) => {
+app.post('/users', checkBody(bodySchema), (req, res) => {
     userID += 1;
     users.push({
         id: userID,
@@ -52,7 +55,7 @@ app.post('/users', (req, res) => {
     res.send({ id: userID, });
 });
 
-app.put('/users/:id', (req, res) => {
+app.put('/users/:id', checkParams(idSchema), checkBody(bodySchema), (req, res) => {
     const user = users.find(user => user.id === Number(req.params.id));
     if (user) {
         user.firstName = req.body.firstName;
@@ -66,7 +69,7 @@ app.put('/users/:id', (req, res) => {
     }
 });
 
-app.delete('/users/:id', (req, res) => {
+app.delete('/users/:id', checkParams(idSchema), (req, res) => {
     const user = users.find(user => user.id === Number(req.params.id));
     if (user) {
         const index = users.indexOf(user);
@@ -76,6 +79,12 @@ app.delete('/users/:id', (req, res) => {
         res.status(404);
         res.send({ user: null });
     }
+});
+
+app.use((req, res) => {
+    res.status(404).send({
+        message: 'URL not found!'
+    })
 });
 
 app.listen(4000);
